@@ -48,7 +48,7 @@ const Navbar = ({ visible = true }: NavbarProps) => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl tracking-[0.3em] font-semibold text-foreground" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <span className="text-2xl tracking-[0.3em] font-semibold text-primary" style={{ fontFamily: 'Playfair Display, serif' }}>
               LAVORE
             </span>
           </Link>

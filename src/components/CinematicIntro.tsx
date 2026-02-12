@@ -48,7 +48,7 @@ const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: '#F8F6F2',
+          backgroundColor: 'hsl(0 0% 4%)',
           opacity: phase >= 1 ? 0 : 1,
           transition: 'opacity 2s cubic-bezier(0.4, 0, 0.2, 1)',
           zIndex: 3,
@@ -72,7 +72,7 @@ const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(248,246,242,0.4), rgba(248,246,242,0.2), rgba(248,246,242,0.5))',
+            background: 'linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(10,10,10,0.2), rgba(10,10,10,0.6))',
           }}
         />
       </div>
@@ -103,7 +103,7 @@ const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
           style={{
             fontFamily: 'Playfair Display, serif',
             fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-            color: '#2C2A28',
+            color: 'hsl(40, 20%, 90%)',
             opacity: phase >= 2 ? 1 : 0,
             filter: phase >= 2 ? 'blur(0px)' : 'blur(8px)',
             transform: phase >= 2 ? 'translateY(0)' : 'translateY(10px)',

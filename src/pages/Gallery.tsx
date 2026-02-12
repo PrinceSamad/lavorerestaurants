@@ -55,7 +55,7 @@ const Gallery = () => {
                   className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </ScrollReveal>
           ))}
@@ -65,11 +65,11 @@ const Gallery = () => {
       {/* Lightbox */}
       {lightbox && (
         <div
-          className="fixed inset-0 z-[100] bg-foreground/90 flex items-center justify-center p-6 cursor-pointer"
+          className="fixed inset-0 z-[100] bg-background/95 flex items-center justify-center p-6 cursor-pointer"
           onClick={() => setLightbox(null)}
         >
           <button
-            className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors"
+            className="absolute top-6 right-6 text-foreground/60 hover:text-primary transition-colors"
             onClick={() => setLightbox(null)}
             aria-label="Close lightbox"
           >

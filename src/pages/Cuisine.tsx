@@ -73,9 +73,9 @@ const Cuisine = () => {
                   className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
                   <span className="text-primary text-xs tracking-[0.2em] uppercase mb-2">{dish.category}</span>
-                  <span className="text-xl tracking-wider mb-1 text-white">{dish.name}</span>
+                  <span className="text-xl tracking-wider mb-1">{dish.name}</span>
                   <span className="text-primary/90 text-lg mb-4">{dish.price}</span>
                   {dish.price !== 'Experience' && (
                     <button

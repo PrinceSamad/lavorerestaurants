@@ -3,12 +3,12 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border pt-20 pb-8">
+    <footer className="bg-card border-t border-border/30 pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl tracking-[0.3em] font-semibold text-foreground mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h3 className="text-2xl tracking-[0.3em] font-semibold text-primary mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
               LAVORE
             </h3>
             <p className="text-muted-foreground text-lg leading-relaxed">
