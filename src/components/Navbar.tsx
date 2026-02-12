@@ -12,7 +12,11 @@ const navLinks = [
   { to: '/contact', label: 'Contact' },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  visible?: boolean;
+}
+
+const Navbar = ({ visible = true }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -31,14 +35,20 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled ? 'bg-background/95 backdrop-blur-md' : 'bg-transparent'
+        scrolled ? 'bg-background/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(-20px)',
+        transition: 'opacity 1s ease, transform 1s ease, background-color 0.7s ease, box-shadow 0.7s ease',
+        pointerEvents: visible ? 'auto' : 'none',
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl tracking-[0.3em] font-semibold text-primary" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <span className="text-2xl tracking-[0.3em] font-semibold text-foreground" style={{ fontFamily: 'Playfair Display, serif' }}>
               LAVORE
             </span>
           </Link>

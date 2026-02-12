@@ -19,20 +19,20 @@ const Index = () => {
             alt="Fine dining at Lavore Restaurant"
             className="w-full h-full object-cover animate-slow-zoom"
           />
-          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-background/50" />
         </div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl tracking-[0.2em] font-light mb-6">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl tracking-[0.2em] font-light mb-6 text-foreground">
             <LetterReveal text="LAVORE" letterDelay={120} />
           </h1>
-          <p
-            className="text-xl md:text-2xl text-primary tracking-[0.3em] uppercase"
-            style={{ fontFamily: 'Cormorant Garamond, serif', animationDelay: '1.5s' }}
-          >
-            <ScrollReveal delay={1200}>
+          <ScrollReveal delay={1200}>
+            <p
+              className="text-xl md:text-2xl text-primary tracking-[0.3em] uppercase"
+              style={{ fontFamily: 'Cormorant Garamond, serif' }}
+            >
               Home of Delicious Delicacies
-            </ScrollReveal>
-          </p>
+            </p>
+          </ScrollReveal>
         </div>
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-float-chevron">
           <ChevronDown size={28} className="text-primary/60" />
@@ -45,7 +45,7 @@ const Index = () => {
           <div className="h-px w-20 bg-primary/40 mx-auto mb-12 animate-gold-line" />
         </ScrollReveal>
         <ScrollReveal delay={200}>
-          <h2 className="text-3xl md:text-5xl font-light tracking-wider mb-8">
+          <h2 className="text-3xl md:text-5xl font-light tracking-wider mb-8 text-foreground">
             A Philosophy of Taste
           </h2>
         </ScrollReveal>
@@ -73,15 +73,15 @@ const Index = () => {
               { img: dish3, name: 'Golden Finale' },
             ].map((dish, i) => (
               <ScrollReveal key={dish.name} delay={i * 200}>
-                <div className="group relative overflow-hidden aspect-[3/4]">
+                <div className="group relative overflow-hidden aspect-[3/4] rounded-sm shadow-lg">
                   <img
                     src={dish.img}
                     alt={dish.name}
                     className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end p-8">
-                    <span className="text-xl tracking-[0.15em] text-primary">{dish.name}</span>
+                  <div className="absolute inset-0 bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end p-8">
+                    <span className="text-xl tracking-[0.15em] text-white">{dish.name}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -99,11 +99,11 @@ const Index = () => {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-background/60" />
+          <div className="absolute inset-0 bg-background/50" />
         </div>
         <div className="relative z-10 text-center px-6">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-5xl font-light tracking-wider mb-8">
+            <h2 className="text-3xl md:text-5xl font-light tracking-wider mb-8 text-foreground">
               Reserve Your Table
             </h2>
           </ScrollReveal>
@@ -113,12 +113,14 @@ const Index = () => {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={500}>
-            <Link
-              to="/reservations"
-              className="inline-block border border-primary/50 text-primary px-10 py-4 text-sm tracking-[0.2em] uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-500"
+            <a
+              href="https://wa.me/2349074762834?text=Hello%2C%20I%20would%20like%20to%20make%20a%20reservation%20at%20Lavore%20Restaurant."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border-2 border-primary text-primary px-10 py-4 text-sm tracking-[0.2em] uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-500 rounded-sm"
             >
               Make a Reservation
-            </Link>
+            </a>
           </ScrollReveal>
         </div>
       </section>

@@ -27,7 +27,7 @@ const Contact = () => {
     <main className="pt-20">
       <section className="py-24 text-center px-6">
         <ScrollReveal>
-          <h1 className="text-4xl md:text-6xl tracking-[0.2em] font-light mb-6">Contact</h1>
+          <h1 className="text-4xl md:text-6xl tracking-[0.2em] font-light mb-6 text-foreground">Contact</h1>
         </ScrollReveal>
         <ScrollReveal delay={200}>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
@@ -103,7 +103,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="border border-primary/50 text-primary px-10 py-4 text-sm tracking-[0.2em] uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-500 w-full flex items-center justify-center gap-3"
+                className="border-2 border-primary text-primary px-10 py-4 text-sm tracking-[0.2em] uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-500 w-full flex items-center justify-center gap-3 rounded-sm"
               >
                 {submitted ? (
                   <>

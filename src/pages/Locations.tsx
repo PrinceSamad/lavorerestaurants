@@ -27,7 +27,7 @@ const Locations = () => {
     <main className="pt-20">
       <section className="py-24 text-center px-6">
         <ScrollReveal>
-          <h1 className="text-4xl md:text-6xl tracking-[0.2em] font-light mb-6">Our Locations</h1>
+          <h1 className="text-4xl md:text-6xl tracking-[0.2em] font-light mb-6 text-foreground">Our Locations</h1>
         </ScrollReveal>
         <ScrollReveal delay={200}>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
@@ -40,7 +40,7 @@ const Locations = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {locations.map((loc, i) => (
             <ScrollReveal key={loc.name} delay={i * 200}>
-              <div className="border border-border/50 p-10 text-center hover:border-primary/30 transition-colors duration-500">
+              <div className="border border-border rounded-sm p-10 text-center hover:border-primary/50 hover:shadow-lg transition-all duration-500 bg-card">
                 <h3 className="text-2xl tracking-[0.15em] mb-8 text-primary">{loc.name}</h3>
                 <div className="space-y-6 text-muted-foreground">
                   <div className="flex flex-col items-center gap-2">
@@ -65,8 +65,7 @@ const Locations = () => {
                   </div>
                 </div>
 
-                {/* Map placeholder */}
-                <div className="mt-8 aspect-video bg-muted/30 border border-border/30 flex items-center justify-center">
+                <div className="mt-8 aspect-video bg-muted/50 border border-border rounded-sm flex items-center justify-center">
                   <span className="text-sm text-muted-foreground/50 tracking-wider">Map — {loc.name}</span>
                 </div>
               </div>
