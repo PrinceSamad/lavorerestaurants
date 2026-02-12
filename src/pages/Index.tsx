@@ -19,7 +19,7 @@ const Index = () => {
             alt="Fine dining at Lavore Restaurant"
             className="w-full h-full object-cover animate-slow-zoom"
           />
-          <div className="absolute inset-0 bg-background/50" />
+          <div className="absolute inset-0 bg-background/70" />
         </div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-7xl lg:text-8xl tracking-[0.2em] font-light mb-6 text-foreground">
@@ -80,8 +80,8 @@ const Index = () => {
                     className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end p-8">
-                    <span className="text-xl tracking-[0.15em] text-white">{dish.name}</span>
+                  <div className="absolute inset-0 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end p-8">
+                    <span className="text-xl tracking-[0.15em] text-primary">{dish.name}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -99,11 +99,11 @@ const Index = () => {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-background/50" />
+          <div className="absolute inset-0 bg-background/60" />
         </div>
         <div className="relative z-10 text-center px-6">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-5xl font-light tracking-wider mb-8 text-foreground">
+            <h2 className="text-3xl md:text-5xl font-light tracking-wider mb-8">
               Reserve Your Table
             </h2>
           </ScrollReveal>
