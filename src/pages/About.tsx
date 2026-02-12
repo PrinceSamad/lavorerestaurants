@@ -9,11 +9,11 @@ const About = () => {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img src={restaurantInterior} alt="Lavore interior" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-background/50" />
         </div>
         <div className="relative z-10 text-center">
           <ScrollReveal>
-            <h1 className="text-4xl md:text-6xl tracking-[0.2em] font-light">Our Story</h1>
+            <h1 className="text-4xl md:text-6xl tracking-[0.2em] font-light text-foreground">Our Story</h1>
           </ScrollReveal>
         </div>
       </section>
@@ -26,8 +26,8 @@ const About = () => {
         <ScrollReveal delay={200}>
           <p className="text-xl md:text-2xl text-center leading-relaxed text-muted-foreground mb-12">
             Lavore was born from a singular vision: to create a sanctuary where culinary artistry meets
-            timeless elegance. Every element — from the carefully sourced ingredients to the ambient glow
-            of candlelight — is orchestrated to deliver an unforgettable experience.
+            timeless elegance. Every element — from the carefully sourced ingredients to the warm glow
+            of natural light — is orchestrated to deliver an unforgettable experience.
           </p>
         </ScrollReveal>
         <ScrollReveal delay={400}>
@@ -42,11 +42,11 @@ const About = () => {
       <section className="py-24 px-6 bg-card">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden rounded-sm shadow-lg">
               <img
                 src={ceoPortrait}
                 alt="Dr. Adam Muhammed Bedemasi — Founder of Lavore Restaurant"
-                className="w-full max-w-md mx-auto object-cover aspect-[3/4] grayscale hover:grayscale-0 transition-all duration-[2s]"
+                className="w-full max-w-md mx-auto object-cover aspect-[3/4] hover:scale-105 transition-transform duration-[2s]"
               />
             </div>
           </ScrollReveal>
@@ -55,7 +55,7 @@ const About = () => {
               <h2 className="text-sm tracking-[0.3em] uppercase text-primary mb-4">The Visionary</h2>
             </ScrollReveal>
             <ScrollReveal delay={400}>
-              <h3 className="text-3xl md:text-4xl font-light tracking-wider mb-8">
+              <h3 className="text-3xl md:text-4xl font-light tracking-wider mb-8 text-foreground">
                 Dr. Adam Muhammed Bedemasi
               </h3>
             </ScrollReveal>
