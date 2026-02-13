@@ -59,7 +59,7 @@ const Navbar = ({ visible = true }: NavbarProps) => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm tracking-[0.15em] uppercase transition-colors duration-300 hover:text-primary ${
+              className={`text-sm font-bold tracking-[0.15em] uppercase transition-colors duration-300 hover:text-primary ${
                   location.pathname === link.to ? 'text-primary' : 'text-foreground/70'
                 }`}
               >
@@ -85,12 +85,12 @@ const Navbar = ({ visible = true }: NavbarProps) => {
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
+        <div className="flex flex-col items-center justify-start pt-12 h-full gap-6 overflow-y-auto pb-8">
           {navLinks.map((link, i) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`text-lg tracking-[0.2em] uppercase transition-all duration-500 hover:text-primary ${
+              className={`text-lg font-bold tracking-[0.2em] uppercase transition-all duration-500 hover:text-primary ${
                 location.pathname === link.to ? 'text-primary' : 'text-foreground/70'
               }`}
               style={{
