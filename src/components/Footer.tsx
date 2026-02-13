@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="bg-card border-t border-border/30 pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
           {/* Brand */}
           <div>
             <h3 className="text-2xl tracking-[0.3em] font-semibold text-primary mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
@@ -14,22 +13,6 @@ const Footer = () => {
             <p className="text-muted-foreground text-lg leading-relaxed">
               Home of Delicious Delicacies. An exquisite dining experience crafted with passion and precision.
             </p>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <h4 className="text-primary text-sm tracking-[0.2em] uppercase mb-6">Navigate</h4>
-            <div className="flex flex-col gap-3">
-              {['/', '/about', '/cuisine', '/locations', '/reservations', '/gallery', '/contact'].map((path) => (
-                <Link
-                  key={path}
-                  to={path}
-                  className="text-muted-foreground hover:text-primary transition-colors text-lg"
-                >
-                  {path === '/' ? 'Home' : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-                </Link>
-              ))}
-            </div>
           </div>
 
           {/* Contact */}
