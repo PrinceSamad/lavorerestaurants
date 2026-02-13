@@ -54,15 +54,15 @@ const Navbar = ({ visible = true }: NavbarProps) => {
           </Link>
 
           {/* Desktop Nav — pushed to far right */}
-          <div className="hidden md:flex items-center">
-            {navLinks.map((link, i) => (
+          <div className="hidden lg:flex items-center">
+            {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="group relative px-3 lg:px-5 py-2"
+                className="group relative px-3 xl:px-5 py-2"
               >
                 <span
-                  className={`text-[11px] lg:text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
+                  className={`text-[11px] xl:text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
                     location.pathname === link.to
                       ? 'text-primary'
                       : 'text-foreground/80 group-hover:text-primary'
@@ -71,7 +71,6 @@ const Navbar = ({ visible = true }: NavbarProps) => {
                 >
                   {link.label}
                 </span>
-                {/* Animated underline */}
                 <span
                   className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-px bg-primary transition-all duration-500 ease-out ${
                     location.pathname === link.to
@@ -83,65 +82,64 @@ const Navbar = ({ visible = true }: NavbarProps) => {
             ))}
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Hamburger Toggle — visible on tablet & mobile */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground hover:text-primary transition-colors duration-300"
+            className="lg:hidden text-foreground hover:text-primary transition-colors duration-300 z-[60]"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+            {isOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu — fullscreen overlay */}
+      {/* Fullscreen Overlay Menu — tablet & mobile */}
       <div
-        className={`md:hidden fixed inset-0 bg-background transition-all duration-700 ease-in-out ${
+        className={`lg:hidden fixed inset-0 z-50 flex flex-col items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ top: 0 }}
+        style={{ backgroundColor: 'hsl(var(--background))' }}
       >
-        {/* Close button inside overlay */}
-        <div className="flex justify-end px-6 pt-7">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="text-foreground/80 hover:text-primary transition-colors"
-            aria-label="Close menu"
-          >
-            <X size={24} strokeWidth={1.5} />
-          </button>
-        </div>
+        {/* Close button — top right */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute top-7 right-6 text-foreground/60 hover:text-primary transition-colors duration-300"
+          aria-label="Close menu"
+        >
+          <X size={28} strokeWidth={1.2} />
+        </button>
 
-        <div className="flex flex-col items-center justify-center h-[calc(100%-80px)] gap-1">
+        {/* Centered vertical nav */}
+        <nav className="flex flex-col items-center gap-2">
           {navLinks.map((link, i) => (
             <Link
               key={link.to}
               to={link.to}
-              className="group relative py-3"
+              className="group relative py-3 px-6"
               style={{
                 opacity: isOpen ? 1 : 0,
-                transform: isOpen ? 'translateY(0)' : 'translateY(12px)',
-                transition: `opacity 0.5s ease ${i * 70 + 200}ms, transform 0.5s ease ${i * 70 + 200}ms`,
+                transform: isOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.96)',
+                transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 80 + 150}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 80 + 150}ms`,
               }}
             >
               <span
-                className={`text-lg font-semibold tracking-[0.3em] uppercase transition-colors duration-300 ${
+                className={`text-xl sm:text-2xl font-semibold tracking-[0.35em] uppercase transition-colors duration-500 ${
                   location.pathname === link.to
                     ? 'text-primary'
-                    : 'text-foreground/70 group-hover:text-primary'
+                    : 'text-foreground/50 group-hover:text-primary'
                 }`}
                 style={{ fontFamily: 'Cormorant Garamond, serif' }}
               >
                 {link.label}
               </span>
               <span
-                className={`absolute -bottom-0 left-1/2 -translate-x-1/2 h-px bg-primary transition-all duration-500 ${
-                  location.pathname === link.to ? 'w-8' : 'w-0 group-hover:w-8'
+                className={`absolute bottom-1.5 left-1/2 -translate-x-1/2 h-px bg-primary transition-all duration-600 ease-out ${
+                  location.pathname === link.to ? 'w-10' : 'w-0 group-hover:w-10'
                 }`}
               />
             </Link>
           ))}
-        </div>
+        </nav>
       </div>
     </nav>
   );
