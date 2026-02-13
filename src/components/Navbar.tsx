@@ -44,7 +44,7 @@ const Navbar = ({ visible = true }: NavbarProps) => {
         pointerEvents: visible ? 'auto' : 'none',
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
@@ -54,13 +54,13 @@ const Navbar = ({ visible = true }: NavbarProps) => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8 flex-wrap justify-end">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-              className={`text-sm font-bold tracking-[0.15em] uppercase transition-colors duration-300 hover:text-primary ${
-                  location.pathname === link.to ? 'text-primary' : 'text-foreground/70'
+                className={`text-xs lg:text-sm font-bold tracking-[0.1em] lg:tracking-[0.15em] uppercase transition-colors duration-300 hover:text-primary ${
+                  location.pathname === link.to ? 'text-primary' : 'text-foreground'
                 }`}
               >
                 {link.label}
@@ -71,17 +71,17 @@ const Navbar = ({ visible = true }: NavbarProps) => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-foreground/80 hover:text-primary transition-colors"
+            className="md:hidden text-foreground hover:text-primary transition-colors"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-20 bg-background/98 backdrop-blur-lg transition-all duration-500 ${
+        className={`md:hidden fixed inset-0 top-20 bg-background/98 backdrop-blur-lg transition-all duration-500 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -90,8 +90,8 @@ const Navbar = ({ visible = true }: NavbarProps) => {
             <Link
               key={link.to}
               to={link.to}
-              className={`text-lg font-bold tracking-[0.2em] uppercase transition-all duration-500 hover:text-primary ${
-                location.pathname === link.to ? 'text-primary' : 'text-foreground/70'
+              className={`text-xl font-bold tracking-[0.2em] uppercase transition-all duration-500 hover:text-primary ${
+                location.pathname === link.to ? 'text-primary' : 'text-foreground'
               }`}
               style={{
                 opacity: isOpen ? 1 : 0,
