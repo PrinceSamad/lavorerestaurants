@@ -109,7 +109,9 @@ const Navbar = ({ visible = true }: NavbarProps) => {
         </div>
       </div>
 
-      {/* Fullscreen Overlay Menu — tablet & mobile */}
+    </nav>
+
+      {/* Fullscreen Overlay Menu — tablet & mobile (moved outside the transformed nav to allow full-viewport fixed positioning) */}
       <div
         className={`lg:hidden fixed inset-0 z-[100] flex flex-col items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
