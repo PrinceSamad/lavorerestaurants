@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
+const BLUR_TARGET_ID = 'main-content-wrapper';
+
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
@@ -31,6 +33,20 @@ const Navbar = ({ visible = true }: NavbarProps) => {
     setIsOpen(false);
     window.scrollTo(0, 0);
   }, [location]);
+
+  // Blur the main content when menu is open
+  useEffect(() => {
+    const el = document.getElementById(BLUR_TARGET_ID);
+    if (el) {
+      if (isOpen) {
+        el.style.filter = 'blur(8px) brightness(0.7)';
+        el.style.pointerEvents = 'none';
+      } else {
+        el.style.filter = '';
+        el.style.pointerEvents = '';
+      }
+    }
+  }, [isOpen]);
 
   return (
     <nav
@@ -95,10 +111,10 @@ const Navbar = ({ visible = true }: NavbarProps) => {
 
       {/* Fullscreen Overlay Menu — tablet & mobile */}
       <div
-        className={`lg:hidden fixed inset-0 z-50 flex flex-col items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`lg:hidden fixed inset-0 z-[100] flex flex-col items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ backgroundColor: 'hsl(var(--background))' }}
+        style={{ backgroundColor: 'hsl(var(--background) / 0.98)' }}
       >
         {/* Close button — top right */}
         <button

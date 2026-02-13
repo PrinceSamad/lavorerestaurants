@@ -37,20 +37,22 @@ const AppContent = () => {
     <>
       {isHome && !introComplete && <CinematicIntro onComplete={handleIntroComplete} />}
       <Navbar visible={showNavbar} />
-      <PageTransition>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/cuisine" element={<Cuisine />} />
-          <Route path="/locations" element={<Locations />} />
-          <Route path="/reservations" element={<Reservations />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </PageTransition>
-      <Footer />
-      <WhatsAppButton />
+      <div id="main-content-wrapper" className="transition-all duration-700">
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cuisine" element={<Cuisine />} />
+            <Route path="/locations" element={<Locations />} />
+            <Route path="/reservations" element={<Reservations />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </PageTransition>
+        <Footer />
+        <WhatsAppButton />
+      </div>
     </>
   );
 };
