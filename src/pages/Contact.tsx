@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Check } from 'lucide-react';
+import { Phone, Mail, MapPin, Check, MessageCircle } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { toast } from '@/hooks/use-toast';
+
+const WHATSAPP_NUMBER = '2349074762834';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -11,12 +13,23 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) {
+    if (!name.trim() || !email.trim() || !message.trim()) {
       toast({ title: 'Please fill in all fields', variant: 'destructive' });
       return;
     }
+    if (name.trim().length > 100 || email.trim().length > 255 || message.trim().length > 1000) {
+      toast({ title: 'Input too long', variant: 'destructive' });
+      return;
+    }
+
+    const whatsappMessage = `Hello Lavore Restaurant!\n\nName: ${name.trim()}\nEmail: ${email.trim()}\nMessage: ${message.trim()}`;
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`,
+      '_blank'
+    );
+
     setSubmitted(true);
-    toast({ title: 'Demo only', description: 'This form is for demonstration. Please contact us via phone or email listed on this page.' });
+    toast({ title: 'Redirecting to WhatsApp', description: 'Your message has been prepared. Send it via WhatsApp to reach us directly.' });
     setName('');
     setEmail('');
     setMessage('');
@@ -77,6 +90,7 @@ const Contact = () => {
                   onChange={(e) => setName(e.target.value)}
                   className="luxury-input"
                   placeholder="Your name"
+                  maxLength={100}
                   required
                 />
               </div>
@@ -88,6 +102,7 @@ const Contact = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="luxury-input"
                   placeholder="Your email"
+                  maxLength={255}
                   required
                 />
               </div>
@@ -98,6 +113,7 @@ const Contact = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   className="luxury-input min-h-[140px] resize-none"
                   placeholder="Your message"
+                  maxLength={1000}
                   required
                 />
               </div>
@@ -110,7 +126,9 @@ const Contact = () => {
                     <Check size={16} /> Sent
                   </>
                 ) : (
-                  'Send Message'
+                  <>
+                    <MessageCircle size={16} /> Send via WhatsApp
+                  </>
                 )}
               </button>
             </form>

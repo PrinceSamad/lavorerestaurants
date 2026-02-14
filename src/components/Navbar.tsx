@@ -7,7 +7,8 @@ const BLUR_TARGET_ID = 'main-content-wrapper';
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/cuisine', label: 'Cuisine' },
+  { to: '/cuisine', label: 'Our Cuisine' },
+  { to: '/menu', label: 'Menu' },
   { to: '/locations', label: 'Locations' },
   { to: '/reservations', label: 'Reservations' },
   { to: '/gallery', label: 'Gallery' },
