@@ -16,6 +16,7 @@ import Locations from "./pages/Locations";
 import Reservations from "./pages/Reservations";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import Menu from "./pages/Menu";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const AppContent = () => {
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/cuisine" element={<Cuisine />} />
+            <Route path="/menu" element={<Menu />} />
             <Route path="/locations" element={<Locations />} />
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/gallery" element={<Gallery />} />
