@@ -16,7 +16,7 @@ const Contact = () => {
       return;
     }
     setSubmitted(true);
-    toast({ title: 'Message sent', description: 'We will respond shortly.' });
+    toast({ title: 'Demo only', description: 'This form is for demonstration. Please contact us via phone or email listed on this page.' });
     setName('');
     setEmail('');
     setMessage('');
