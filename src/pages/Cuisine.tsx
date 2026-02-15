@@ -1,16 +1,22 @@
-import { useState } from 'react';
-import { ShoppingBag } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { ShoppingBag, Search } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
+import menuPizzas from '@/assets/menu-pizzas.png';
+import menuChicken from '@/assets/menu-chicken.png';
+import menuBurgers from '@/assets/menu-burgers.png';
+import menuWrappers from '@/assets/menu-wrappers.png';
+import menuSalads from '@/assets/menu-salads.png';
 
 const WHATSAPP_NUMBER = '2349074762834';
 
 type Dish = { name: string; price: string; description?: string };
 
-type Category = { title: string; items: Dish[] };
+type Category = { title: string; image?: string; items: Dish[] };
 
 const menuCategories: Category[] = [
   {
     title: 'Pizzas',
+    image: menuPizzas,
     items: [
       { name: 'Pogo Dew', price: '$6.00', description: 'Spicy Cherry, Peppers, Garlic & Parmesan' },
       { name: 'Pogo Dew (Tweaked)', price: '$8.00', description: 'Pineapple, Mushroom, Spicy Cherry Peppers, Parmesan & Garlic Sauce' },
@@ -29,6 +35,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Grilled Chicken',
+    image: menuChicken,
     items: [
       { name: 'Quarter Chicken', price: '$4.00' },
       { name: 'Half Chicken', price: '$8.00' },
@@ -40,6 +47,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Meal Deals',
+    image: menuChicken,
     items: [
       { name: 'Quarter Chicken Meal Deal', price: '$5.00', description: 'Quarter Chicken & Chips' },
       { name: 'Chicken Burger Meal Deal', price: '$5.00', description: 'Chicken Burger & Small Chips' },
@@ -52,6 +60,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Burgers',
+    image: menuBurgers,
     items: [
       { name: 'Grilled Chicken Burger', price: '$4.00', description: 'Grilled Chicken Breast, Lettuce, Tomato, Mayonnaise on a freshly Baked Portuguese Roll' },
       { name: 'Double Chicken Burger', price: '$5.00', description: '2x Grilled Chicken Breast, Lettuce, Tomato, Mayonnaise on a freshly Baked Portuguese Roll' },
@@ -61,6 +70,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Combos',
+    image: menuBurgers,
     items: [
       { name: 'Snap Chicken Combo', price: '$6.00', description: 'Quarter Chicken, Small Chips & 500ml Pepsi' },
       { name: 'Chicken Burger Combo', price: '$6.00', description: 'Chicken Burger, Small Chips & 500ml Pepsi' },
@@ -70,6 +80,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Wrappers',
+    image: menuWrappers,
     items: [
       { name: 'Peri Peri Wrapper', price: '$4.00', description: 'Peri-Peri Chicken, Cucumber with a splash of Diced Tomato' },
       { name: 'Portuguese Wrapper', price: '$4.00', description: 'Marinated Chicken Strips, Spring Onion & Cucumber, with a Splash of Pogo Dressing' },
@@ -81,6 +92,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Extras',
+    image: menuWrappers,
     items: [
       { name: 'Small Chips', price: '$1.50' },
       { name: 'Med Chips', price: '$3.00' },
@@ -89,6 +101,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Bowls',
+    image: menuWrappers,
     items: [
       { name: 'Rice Bowl', price: '$6.00' },
       { name: 'Greek Bowl', price: '$6.00' },
@@ -97,6 +110,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Salads',
+    image: menuSalads,
     items: [
       { name: 'Portuguese Salad', price: '$3.00' },
       { name: 'Greek Salad', price: '$4.00' },
@@ -108,6 +122,7 @@ const menuCategories: Category[] = [
   },
   {
     title: 'Desserts',
+    image: menuSalads,
     items: [
       { name: 'Hot Fudged Brownie', price: '$4.00' },
       { name: 'Rich Chocolate Cake Slice', price: '$4.00' },
@@ -127,9 +142,27 @@ const handleOrder = (dishName: string, price: string) => {
 
 const Cuisine = () => {
   const [active, setActive] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredCategories =
-    active === 'All' ? menuCategories : menuCategories.filter((c) => c.title === active);
+  const filteredCategories = useMemo(() => {
+    const byCategory = active === 'All' ? menuCategories : menuCategories.filter((c) => c.title === active);
+
+    if (!searchQuery.trim()) return byCategory;
+
+    const query = searchQuery.toLowerCase();
+    return byCategory
+      .map((cat) => ({
+        ...cat,
+        items: cat.items.filter(
+          (dish) =>
+            dish.name.toLowerCase().includes(query) ||
+            (dish.description && dish.description.toLowerCase().includes(query))
+        ),
+      }))
+      .filter((cat) => cat.items.length > 0);
+  }, [active, searchQuery]);
+
+  const totalResults = filteredCategories.reduce((sum, cat) => sum + cat.items.length, 0);
 
   return (
     <main className="pt-20">
@@ -142,6 +175,28 @@ const Cuisine = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Each creation is a testament to culinary mastery — where precision meets passion on every plate.
           </p>
+        </ScrollReveal>
+      </section>
+
+      {/* Search Bar */}
+      <section className="px-6 mb-8 max-w-xl mx-auto">
+        <ScrollReveal delay={300}>
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
+            <input
+              type="text"
+              placeholder="Search dishes..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 bg-card/60 backdrop-blur-sm border border-border/40 rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors duration-300 tracking-wider text-sm"
+              style={{ fontFamily: 'Cormorant Garamond, serif' }}
+            />
+          </div>
+          {searchQuery.trim() && (
+            <p className="text-muted-foreground text-xs mt-2 text-center tracking-wider">
+              {totalResults} {totalResults === 1 ? 'dish' : 'dishes'} found
+            </p>
+          )}
         </ScrollReveal>
       </section>
 
@@ -166,6 +221,11 @@ const Cuisine = () => {
 
       {/* Dishes by Category */}
       <section className="px-6 pb-32 max-w-6xl mx-auto">
+        {filteredCategories.length === 0 && (
+          <p className="text-center text-muted-foreground text-lg py-16 tracking-wider">
+            No dishes found matching "{searchQuery}"
+          </p>
+        )}
         {filteredCategories.map((category) => (
           <div key={category.title} className="mb-16">
             <ScrollReveal>
@@ -173,6 +233,21 @@ const Cuisine = () => {
                 {category.title}
               </h2>
             </ScrollReveal>
+
+            {/* Category image banner */}
+            {category.image && (
+              <ScrollReveal delay={100}>
+                <div className="mb-8 overflow-hidden rounded-sm max-h-[300px]">
+                  <img
+                    src={category.image}
+                    alt={`${category.title} menu`}
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+              </ScrollReveal>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {category.items.map((dish, i) => (
                 <ScrollReveal key={dish.name} delay={i * 80}>
