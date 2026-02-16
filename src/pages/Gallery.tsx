@@ -11,27 +11,17 @@ import chefKitchen from '@/assets/chef-kitchen.jpg';
 import restaurantInterior from '@/assets/restaurant-interior.jpg';
 import galleryWine from '@/assets/gallery-wine.jpg';
 import galleryBar from '@/assets/gallery-bar.jpg';
-import menuPizzas from '@/assets/menu-pizzas.png';
-import menuChicken from '@/assets/menu-chicken.png';
-import menuBurgers from '@/assets/menu-burgers.png';
-import menuWrappers from '@/assets/menu-wrappers.png';
-import menuSalads from '@/assets/menu-salads.png';
 
 const images = [
   { src: heroDining, alt: 'Fine dining table setting', span: 'col-span-2 row-span-2' },
-  { src: menuPizzas, alt: 'Lavore pizza menu', span: '' },
   { src: galleryWine, alt: 'Wine service', span: '' },
   { src: dish1, alt: 'Amuse-bouche', span: '' },
-  { src: menuChicken, alt: 'Grilled chicken selection', span: 'col-span-2' },
-  { src: dish2, alt: 'Wagyu steak', span: '' },
-  { src: menuBurgers, alt: 'Burgers and combos', span: '' },
+  { src: dish2, alt: 'Wagyu steak', span: 'col-span-2' },
   { src: restaurantInterior, alt: 'Restaurant interior', span: 'col-span-2' },
   { src: dish3, alt: 'Chocolate dessert', span: '' },
   { src: chefKitchen, alt: 'Chef at work', span: '' },
-  { src: menuWrappers, alt: 'Wrappers and bowls', span: '' },
   { src: dish4, alt: 'Oysters', span: '' },
   { src: galleryBar, alt: 'Bar lounge', span: 'col-span-2' },
-  { src: menuSalads, alt: 'Salads and desserts', span: '' },
   { src: dish5, alt: 'Truffle pasta', span: '' },
 ];
 
