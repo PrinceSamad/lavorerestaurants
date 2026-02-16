@@ -3,7 +3,7 @@ import { ShoppingBag, Search } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const WHATSAPP_NUMBER = '2349074762834';
-const USD_TO_NGN = 1500;
+const USD_TO_NGN = 1400;
 
 type Dish = { name: string; priceUsd: number; description?: string };
 type Category = { title: string; items: Dish[] };
